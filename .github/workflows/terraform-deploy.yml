@@ -1,0 +1,44 @@
+name: 'Despliegue Automático ITAM'
+
+# El robot se despierta cada vez que alguien hace "push" a la rama main
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  terraform:
+    name: 'Terraform Apply'
+    runs-on: ubuntu-latest
+
+    steps:
+    # 1. Descarga tu código desde GitHub
+    - name: Checkout del Repositorio
+      uses: actions/checkout@v3
+
+    # 2. Instala Terraform en el servidor de GitHub
+    - name: Instalar Terraform
+      uses: hashicorp/setup-terraform@v2
+
+    # 3. Se autentica en Google Cloud usando el secreto
+    - name: Autenticación en Google Cloud
+      uses: 'google-github-actions/auth@v1'
+      with:
+        credentials_json: '${{ secrets.GCP_CREDENTIALS }}'
+
+    # 4. LA MAGIA: Reconstruye los archivos secretos antes de empaquetar
+    - name: Inyectar Secretos
+      run: |
+        echo "${{ secrets.TF_VARS }}" > prueba-terraform-gcp/secretos.auto.tfvars
+        echo "${{ secrets.AZURE_CONFIG }}" > extractor-azure/config.json
+        echo "${{ secrets.GCP_CONFIG }}" > extractor-gcp/config.json
+        echo "${{ secrets.HUAWEI_CONFIG }}" > extractor-huawei/config.json
+
+    # 5. Conecta Terraform a tu Bucket de Estado (El Cerebro)
+    - name: Terraform Init
+      run: terraform init
+      working-directory: ./prueba-terraform-gcp
+
+    # 6. Aplica los cambios automáticamente en Google Cloud
+    - name: Terraform Apply
+      run: terraform apply -auto-approve
+      working-directory: ./prueba-terraform-gcp

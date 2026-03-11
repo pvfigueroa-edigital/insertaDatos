@@ -1,0 +1,16 @@
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+*.auto.tfvars
+
+# Empaquetados
+*.zip
+__pycache__/
+
+# Secretos (Ignoramos todos los JSON por defecto, excepto los permitidos)
+*.json
+!app-config.json
+!package.json
+!config.example.json

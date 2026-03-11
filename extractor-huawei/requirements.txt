@@ -1,0 +1,8 @@
+requests==2.31.0
+xlsxwriter==3.1.9
+google-cloud-storage==2.14.0
+huaweicloudsdkcore==3.1.84
+huaweicloudsdkecs==3.1.84
+huaweicloudsdkevs==3.1.84
+huaweicloudsdkvpc==3.1.84
+huaweicloudsdkcbr==3.1.84
