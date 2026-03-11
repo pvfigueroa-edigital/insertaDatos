@@ -1,0 +1,13 @@
+{
+  "name": "api-ingesta-itam",
+  "version": "1.0.0",
+  "description": "API Central para recibir inventarios Multi-Cloud",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "@google-cloud/functions-framework": "^3.3.0",
+    "pg": "^8.11.3"
+  }
+}
