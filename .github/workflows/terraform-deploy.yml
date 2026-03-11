@@ -25,13 +25,18 @@ jobs:
       with:
         credentials_json: '${{ secrets.GCP_CREDENTIALS }}'
 
-    # 4. LA MAGIA: Reconstruye los archivos secretos antes de empaquetar
+    # 4. LA MAGIA: Reconstruye los archivos secretos de forma SEGURA
     - name: Inyectar Secretos
+      env:
+        SECRET_TF: ${{ secrets.TF_VARS }}
+        SECRET_AZURE: ${{ secrets.AZURE_CONFIG }}
+        SECRET_GCP: ${{ secrets.GCP_CONFIG }}
+        SECRET_HUAWEI: ${{ secrets.HUAWEI_CONFIG }}
       run: |
-        echo "${{ secrets.TF_VARS }}" > prueba-terraform-gcp/secretos.auto.tfvars
-        echo "${{ secrets.AZURE_CONFIG }}" > extractor-azure/config.json
-        echo "${{ secrets.GCP_CONFIG }}" > extractor-gcp/config.json
-        echo "${{ secrets.HUAWEI_CONFIG }}" > extractor-huawei/config.json
+        echo "$SECRET_TF" > prueba-terraform-gcp/secretos.auto.tfvars
+        echo "$SECRET_AZURE" > extractor-azure/config.json
+        echo "$SECRET_GCP" > extractor-gcp/config.json
+        echo "$SECRET_HUAWEI" > extractor-huawei/config.json
 
     # 5. Conecta Terraform a tu Bucket de Estado (El Cerebro)
     - name: Terraform Init
