@@ -35,18 +35,16 @@ data "google_project" "project" {}
 # ==========================================
 # NUEVO: BÓVEDA DE SECRETOS (SECRET MANAGER)
 # ==========================================
+# ==========================================
+# NUEVO: BÓVEDA DE SECRETOS (SECRET MANAGER)
+# ==========================================
+
 # A. Creamos el "casillero" en la bóveda
 resource "google_secret_manager_secret" "db_url_secret" {
   secret_id = "database-url"
   replication {
     auto {}
   }
-}
-
-# B. Guardamos la contraseña real adentro (El Secreto)
-resource "google_secret_manager_secret_version" "db_url_secret_version" {
-  secret      = google_secret_manager_secret.db_url_secret.id
-  secret_data = "postgresql://admin_itam:PasswordSeguro123!@10.55.0.3:5432/inventario_itam"
 }
 
 # C. Le damos la llave de la bóveda a Cloud Run
