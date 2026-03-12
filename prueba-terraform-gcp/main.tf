@@ -368,6 +368,11 @@ locals {
       cliente = "CAPREDENA"
       cron    = "12 8 * * *"
     },
+    "aws-test" = {
+      nube    = "aws"
+      cliente = "CLIENTE AWS TEST"
+      cron    = "12 8 * * *"
+    },
   }
 }
 

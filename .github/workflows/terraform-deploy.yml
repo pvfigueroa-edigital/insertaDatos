@@ -32,11 +32,13 @@ jobs:
         SECRET_AZURE: ${{ secrets.AZURE_CONFIG }}
         SECRET_GCP: ${{ secrets.GCP_CONFIG }}
         SECRET_HUAWEI: ${{ secrets.HUAWEI_CONFIG }}
+        SECRET_AWS: ${{ secrets.AWS_CONFIG }}
       run: |
         echo "$SECRET_TF" > prueba-terraform-gcp/secretos.auto.tfvars
         echo "$SECRET_AZURE" > extractor-azure/config.json
         echo "$SECRET_GCP" > extractor-gcp/config.json
         echo "$SECRET_HUAWEI" > extractor-huawei/config.json
+        echo "$SECRET_AWS" > extractor-aws/config.json
 
     # 5. Conecta Terraform a tu Bucket de Estado (El Cerebro)
     - name: Terraform Init
