@@ -369,10 +369,10 @@ locals {
       cron    = "12 8 * * *"
     },
 
-    "mineria-prueba" = {
+    "ine-gcp" = {
       nube    = "gcp"
-      cliente = "MINERIA PRUEBA"
-      cron    = "0 10 * * *"
+      cliente = "INE"
+      cron    = "15 8 * * *"
     }
   }
 }
