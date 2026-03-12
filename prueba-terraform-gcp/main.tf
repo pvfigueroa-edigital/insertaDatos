@@ -374,6 +374,12 @@ locals {
       cliente = "INE"
       cron    = "15 8 * * *"
     }
+
+    "ie-gcp" = {
+      nube    = "gcp"
+      cliente = "IE"
+      cron    = "16 8 * * *"
+    }
   }
 }
 
