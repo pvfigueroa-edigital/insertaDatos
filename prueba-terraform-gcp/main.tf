@@ -329,7 +329,7 @@ output "ip_del_balanceador" {
 
 locals {
   # A. Lista de nubes (Para crear 1 Cloud Function por cada una)
-  nubes = toset(["azure", "gcp", "huawei"])
+  nubes = toset(["azure", "gcp", "huawei", "aws"])
 
   # B. Lista de Trabajos (Para crear 1 Cloud Scheduler por cliente/nube)
   trabajos_extraccion = {
