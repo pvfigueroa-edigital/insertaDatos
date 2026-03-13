@@ -58,6 +58,15 @@
             {"project_id": "project_id", "name": "project_id"},
             {"project_id": "project_id", "name": "project_id"}
         ]
+    },
+   ENTEL CAPEL": {
+        "auth_type": "impersonate",
+        "target_sa": "servicea account a impersonar",
+        "projects": [
+            {"project_id": "project_id", "name": "project_id"},
+            {"project_id": "project_id", "name": "project_id"},
+            {"project_id": "project_id", "name": "project_id"},
+            {"project_id": "project_id", "name": "project_id"}
+        ]
     }
-
 }
